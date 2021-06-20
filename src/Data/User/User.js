@@ -1,5 +1,4 @@
 export var User = {
-   userEmail: "",
-   userPassword:""
-}
-
+  userEmail: "",
+  userPassword: "",
+};
