@@ -4,8 +4,8 @@ function Navbar() {
   return (
     <div>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">
-          Fixed navbar
+        <a class="navbar-brand" href="/">
+          Fashion Ecommerce
         </a>
         <button
           class="navbar-toggler"
@@ -20,14 +20,9 @@ function Navbar() {
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a className="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
-              </a>
-            </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                Link
+              <a class="nav-link" href="/login">
+                Log in
               </a>
             </li>
           </ul>
