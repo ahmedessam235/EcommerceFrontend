@@ -4,8 +4,7 @@ import Login from "../Login/Login";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
   } from "react-router-dom";
   
 function WelcomePage() {
@@ -16,14 +15,6 @@ function WelcomePage() {
      <Router>
      <Switch>
      <Route  exact path="/">
-    <ul><li>1</li>
-    <li>1</li>
-    <li>1</li>
-    <li>1</li>
-    <li>1</li>
-    <li>1</li>
-    <li>1</li>
-    </ul>
      </Route>
      <Route path="/login">
      <Login />

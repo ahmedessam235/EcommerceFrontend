@@ -2,13 +2,30 @@ import React from "react";
 import './Login.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { userDetailContext } from "../../App";
+
+
+
 function Login() {
+  
+  var contextData = React.useContext(userDetailContext);
+  console.log(contextData,"data before press");
+  function HandleSignUp(event){
+    console.log(contextData,"data yoooooo");
+    event.preventDefault();
+  
+    }
+    
+    function HandleSignIn(event){
+      event.preventDefault();
+    console.log(contextData,"data yoooooo");
+  }
   return (
     <div className="Login">
     <Container>
       <form className="form-signin text-center">
         <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail " className="sr-only">
+        <label htmlFor="inputEmail " className="sr-only">
           Email address
         </label>
         <Row>
@@ -18,10 +35,10 @@ function Login() {
           className="form-control"
           placeholder="Email address"
           required=""
-          autofocus=""
+          autoFocus=""
         />
         </Row>
-        <label for="inputPassword" className="sr-only">
+        <label htmlFor="inputPassword" className="sr-only">
           Password
         </label>
         <Row>
@@ -35,7 +52,12 @@ function Login() {
         </Row>
        
         <Row>
-        <button className="btn btn-lg btn-primary btn-block" type="submit">
+        <button className="btn btn-lg btn-primary btn-block " type="submit" onClick = {HandleSignUp}>
+          Sign up
+        </button>
+        </Row>
+        <Row>
+        <button className="btn btn-lg btn-primary btn-block " type="submit" onClick = {HandleSignIn}>
           Sign in
         </button>
         </Row>
