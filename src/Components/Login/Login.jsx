@@ -27,9 +27,8 @@ function Login(props) {
     //save to the global context (user data ) for the sign up
 
     event.preventDefault();
-    await RegisterUserData(contextData);
-    contextData.email = email;
-    contextData.password = password;
+    await RegisterUserData(email,password);
+  
     contextData.setUser(contextData);
     updateloginstate(true);
     history.push("/login");
@@ -40,7 +39,7 @@ function Login(props) {
     event.preventDefault();
 
     //1- Call the backend to exchange the email,password for a token
-    let token = await getUsertoken("testnormaluserahmed", "2343571");
+    let token = await getUsertoken(email, password);
 
     //2- Call the backend again to exchange token for userinfo.
     let userInfo = await getUserInfo(token);
