@@ -9,7 +9,7 @@ export async function RegisterUserData(contextData) {
     .then(function (response) {
       status = response.status;
       if (response.status !== 200) {
-          console.log(response.err,"erorrr in user");
+        console.log(response.err, "erorrr in user");
         return;
       }
     });
@@ -18,26 +18,27 @@ export async function RegisterUserData(contextData) {
       .post("http://localhost:5000/login", userData)
       .then(function (response) {
         if (response.status === 200) {
-          contextData.token = response.data.token;  //validating and giving the user the required token 
+          contextData.token = response.data.token; //validating and giving the user the required token
           contextData.setUser(contextData);
         } else {
           return;
         }
       });
   } else {
-
   }
-
 }
 
-export async function getUsertoken(email,password){
-  let response = await axios.post("http://localhost:5000/login", {email:email,password:password});
+export async function getUsertoken(email, password) {
+  let response = await axios.post("http://localhost:5000/login", {
+    email: email,
+    password: password,
+  });
   if (response.status === 200) {
     return response.data.token;
   } else {
     return null;
   }
-  
+
   // .then(function (response) {
   //   status = response.status;
   //   if (response.status !== 200) {
@@ -47,21 +48,15 @@ export async function getUsertoken(email,password){
   // });
 }
 
-
-export async function getUserInfo(token){
-  let response = await axios.get("http://localhost:5000/user",
-      {
-        headers:{
-          token: token
-        }
-      }
-    );
+export async function getUserInfo(token) {
+  let response = await axios.get("http://localhost:5000/user", {
+    headers: {
+      token: token,
+    },
+  });
   if (response.status === 200) {
     return response.data;
   } else {
     return null;
   }
-  
 }
-
-

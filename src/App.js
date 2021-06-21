@@ -4,11 +4,11 @@ export var userDetailContext = React.createContext(null);
 function App() {
   const [userDetails, setUser] = useState({
     email: null,
-    token: null, 
-    isAdmin:null
+    token: null,
+    isAdmin: null,
   });
   const value = { userDetails, setUser }; //passing the values of usestate hook in order to change the global user data anywhere in the children
-  
+
   return (
     <div className="App">
       <userDetailContext.Provider value={value}>
