@@ -6,7 +6,7 @@ function App() {
     email: "ahmedessam@gmail.com",
     passoword: "12345678",
   });
-  const value = {userDetails,setUser};
+  const value = {userDetails,setUser}; //passing the values of usestate hook in order to change the global user data anywhere in the children
   return (
     <div className="App">
       <userDetailContext.Provider value={value}>

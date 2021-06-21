@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { userDetailContext,setUser } from "../../App";
+import { userDetailContext } from "../../App";
 
 function Login() {
   var contextData = React.useContext(userDetailContext);
-  console.log(contextData, "data before press");
-
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  function handleEmail(event){
+    setEmail(event.target.value);
+  } 
+  function handlePassword(event){
+    setPassword(event.target.value);
+  }
   function HandleSignUp(event) {
-    contextData.email = "test";
-    contextData.password = "testest";
-    contextData.setUser(contextData);
+    contextData.email = email;
+    contextData.password = password;
+    contextData.setUser(contextData,"data after click is ");
+    console.log(contextData);
     event.preventDefault();
   }
 
   function HandleSignIn(event) {
-    event.preventDefault();
-    console.log(contextData, "data yoooooo");
+    contextData.email = email;
+    contextData.password = password;
+    contextData.setUser(contextData);
+    console.log(contextData);
+    event.preventDefault(); 
   }
   return (
     <div className="Login">
@@ -35,6 +45,8 @@ function Login() {
               placeholder="Email address"
               required=""
               autoFocus=""
+              onChange={handleEmail}
+              value={email}
             />
           </Row>
           <label htmlFor="inputPassword" className="sr-only">
@@ -47,6 +59,8 @@ function Login() {
               className="form-control "
               placeholder="Password"
               required=""
+              value={password}
+              onChange={handlePassword}
             />
           </Row>
 
