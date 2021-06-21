@@ -1,8 +1,8 @@
 import React from "react";
-
+import "./Navigationbar.css"
 function Navbar() {
   return (
-    <div>
+    <div className="Navigation-bar">
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a className="navbar-brand" href="/">
           Fashion Ecommerce
