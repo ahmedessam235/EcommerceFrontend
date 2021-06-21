@@ -3,31 +3,34 @@ import "./Login.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { userDetailContext } from "../../App";
-import RegisterUserData from '../../Actions/LoginActions/LoginActions';
+import RegisterUserData from "../../Actions/LoginActions/LoginActions";
 function Login() {
   var contextData = React.useContext(userDetailContext);
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
-  function handleEmail(event){     //handles the email input from form
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  function handleEmail(event) {
+    //handles the email input from form
     setEmail(event.target.value);
-  } 
-  function handlePassword(event){
-    setPassword(event.target.value);   //handles the password input from form
   }
-async   function HandleSignUp(event) {   //save to the global context (user data ) for the sign up
-    contextData.email = email;
-    contextData.password = password;
-    contextData.setUser(contextData);  
-    event.preventDefault();
-   await RegisterUserData(contextData);
-    event.preventDefault();
+  function handlePassword(event) {
+    setPassword(event.target.value); //handles the password input from form
   }
-
-  function HandleSignIn(event) {    //  //save to the global context (user data ) for the sign in
+  async function HandleSignUp(event) {
+    //save to the global context (user data ) for the sign up
     contextData.email = email;
     contextData.password = password;
     contextData.setUser(contextData);
-    event.preventDefault(); 
+    event.preventDefault();
+    await RegisterUserData(contextData);
+    // event.preventDefault();
+  }
+
+  function HandleSignIn(event) {
+    //  //save to the global context (user data ) for the sign in
+    contextData.email = email;
+    contextData.password = password;
+    contextData.setUser(contextData);
+    event.preventDefault();
   }
   return (
     <div className="Login">
