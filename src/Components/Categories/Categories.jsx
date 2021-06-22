@@ -16,9 +16,11 @@ export const categoriesList = [
 ];
 function Categories(props) {
   let history = useHistory();
+
   function handleRoutinToSubcategories() {
     history.push("categories/categoryid=" + props.ID);
   }
+
   return (
     <Router>
       <Link

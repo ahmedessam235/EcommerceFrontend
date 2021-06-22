@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
 export var userDetailContext = React.createContext(null);
+
 function App() {
   const [userDetails, setUser] = useState({
     email: null,

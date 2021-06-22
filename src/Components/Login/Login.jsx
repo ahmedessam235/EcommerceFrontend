@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useState } from "react";
 import "./Login.css";
 import Container from "react-bootstrap/Container";
@@ -56,16 +57,12 @@ function Login(props) {
     contextData.token = globalUser.token;
     contextData.isAdmin = globalUser.isAdmin;
     // contextData.userDetails = globalUser;
-
-    contextData.setUser(contextData);
-
+    contextData.setUser(contextData); //update global state with user data
     console.log(contextData, "context data update is");
     updatedata();
+    console.log(contextData.token, "token aheh");
+    Cookies.set("token", contextData.token);
     history.push("/");
-
-    //save to the global context (user data ) for the sign in
-    //const userCheckResult =   await checkUser(email,password);
-    //console.log(userCheckResult);
   }
 
   function updatedata() {

@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Link} from "react-router-dom";
-
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export const subcategoriesList = [
   {
@@ -20,13 +19,12 @@ function Subcategories(props) {
   function handleRoutinToproducts() {
     window.location.replace("/subcategories/subcategoryid=" + props.ID);
   }
- 
+
   return (
     // <a href={"subcategories/categoryid=" + props.ID}>subcategories hena </a>
     <Router>
       <Link
-       to={"subcategories/subcategoryid=" + props.ID}
-        
+        to={"subcategories/subcategoryid=" + props.ID}
         onClick={handleRoutinToproducts}
       >
         {props.subCategoryName}
