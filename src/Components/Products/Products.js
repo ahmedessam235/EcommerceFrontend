@@ -25,21 +25,20 @@ function getProductsbysubcategory(subCategoryID){
  let counter = 0;
  
  for (counter=0; counter<productssList.length;counter++){
-     if (productssList.subCategoryID === subCategoryID){
+     if (productssList[counter].subCategoryID == subCategoryID){
             result.name = productssList[counter].name;
             result.price = productssList[counter].price;
            
      }
  }
  console.log(result," aho el result");
- return result;
-
+ 
 }
 function Products (){
     var { subcategoryid } = useParams();
     var subCategoryID =  subcategoryid.charAt(subcategoryid.length - 1); //parsing the id of subcategories t
     console.log(subCategoryID);
-    getProductsbysubcategory();
+    getProductsbysubcategory(subCategoryID);
 return (
     <div>
      <p>
