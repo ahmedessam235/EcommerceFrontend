@@ -47,7 +47,7 @@ function WelcomePage() {
             })
             }
         </Route>
-       <Route path="/subcategories/:subcategoriesid">
+       <Route path="/subcategories/:subcategoryid">
         <Products />
           </Route>
          
