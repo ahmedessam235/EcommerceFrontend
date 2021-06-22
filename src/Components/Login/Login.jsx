@@ -27,8 +27,8 @@ function Login(props) {
     //save to the global context (user data ) for the sign up
 
     event.preventDefault();
-    await RegisterUserData(email,password);
-  
+    await RegisterUserData(email, password);
+
     contextData.setUser(contextData);
     updateloginstate(true);
     history.push("/login");

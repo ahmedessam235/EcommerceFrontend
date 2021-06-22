@@ -1,18 +1,17 @@
 import axios from "axios";
 
-export async function RegisterUserData(email,password) {
-  const userData = { email: email, password:password };
+export async function RegisterUserData(email, password) {
+  const userData = { email: email, password: password };
   var status = 0;
 
- let response =  await axios
-    .post("http://localhost:5000/user", userData);
+  let response = await axios.post("http://localhost:5000/user", userData);
 
-    status = response.status;
-    if (response.status !== 200) {
-      console.log(response.err, "erorrr in user");
-      return;
-    }
-    if (status === 200) {
+  status = response.status;
+  if (response.status !== 200) {
+    console.log(response.err, "erorrr in user");
+    return;
+  }
+  if (status === 200) {
     console.log("we have saved user data");
   } else {
   }
