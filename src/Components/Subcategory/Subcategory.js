@@ -1,26 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
 function Subcategory(props){
-
-function handleRoutinToproducts() {
-    window.location.replace("/subcategories/subcategoryid=" + props.ID);
-    console.log(props.ID,"props ID aheh");
-    }
-
+console.log(props.ID,"subcategory ID aho");
     return (
 <div>
 
-<Router>
       <Link
-        to={"subcategories/subcategoryid=" + props.ID}
-        onClick={handleRoutinToproducts}
+        to={"/subcategories/subcategoryid=" + props.ID}
       >
         {props.subCategoryName}
       </Link>
-    </Router>
     </div>
     );
 }

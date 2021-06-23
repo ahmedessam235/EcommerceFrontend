@@ -19,6 +19,7 @@ function Subcategories(props) {
   }, []);
 
 if(subcategories) {
+  console.log(subcategories,"subcategories");
   return (
     <div>
       {subcategories.map((subCategoryItem, index) => {
@@ -27,7 +28,7 @@ if(subcategories) {
          key={index}
          id={index}
          subCategoryName={subCategoryItem.name}
-         ID={subCategoryItem.id}
+         ID={subCategoryItem.subcategoryId}
        />
      );
    })}
