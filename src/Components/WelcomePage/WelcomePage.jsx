@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { userDetailContext } from "../../App";
 import getCategories from "../../Actions/CategoriesActions/CategoriesActions";
 import { restoreLoggedInUser } from "../../Actions/LoginActions/LoginActions";
+import { AdminPanel } from "../AdminPanel/AdminPanel";
+
 function WelcomePage() {
   var result;
   var contextData = React.useContext(userDetailContext);
@@ -29,7 +31,9 @@ function WelcomePage() {
   if (categories) {
     return (
       <div>
-        <Navbar />
+        <Navbar 
+          user = {contextData}
+        /> 
         <Router>
           <Switch>
             <Route exact path="/">
@@ -57,6 +61,11 @@ function WelcomePage() {
 
             <Route path="/login">
               <Login userUpdated={updateWelcomePage} />
+            </Route>
+            <Route path="/admin">
+              <AdminPanel 
+                user = {contextData}
+              />
             </Route>
           </Switch>
         </Router>

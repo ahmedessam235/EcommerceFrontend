@@ -1,6 +1,8 @@
 import React from "react";
 import "./Navigationbar.css";
-function Navbar() {
+function Navbar(props) {
+  let isAdmin = props.user.userDetails.isAdmin;  //conditional rendering value for showing the admin panel.
+
   return (
     <div className="Navigation-bar">
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -25,6 +27,18 @@ function Navbar() {
                 Log in
               </a>
             </li>
+            {
+              isAdmin?
+                <li className="nav-item">
+                  <a className="nav-link" href="/admin">
+                    Admin Panel
+                  </a>
+                </li>
+              :
+            <></>
+              
+            }
+           
           </ul>
         </div>
       </nav>
