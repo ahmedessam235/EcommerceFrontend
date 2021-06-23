@@ -6,7 +6,6 @@ import Subcategories from "../Subcategories/Subcategories";
 import Products from "../Products/Products";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { userDetailContext } from "../../App";
-import { subcategoriesList } from "../Subcategories/Subcategories";
 import getCategories from "../../Actions/CategoriesActions/CategoriesActions";
 import { restoreLoggedInUser } from "../../Actions/LoginActions/LoginActions";
 function WelcomePage() {
@@ -28,7 +27,6 @@ function WelcomePage() {
     fetchData();
   }, []);
   if (categories) {
-    console.log(result, "result 2");
     return (
       <div>
         <Navbar />
@@ -49,16 +47,9 @@ function WelcomePage() {
               })}
             </Route>
             <Route path="/categories/:categoryid">
-              {subcategoriesList.map((subCategoryItem, index) => {
-                return (
-                  <Subcategories
-                    key={index}
-                    id={index}
-                    subCategoryName={subCategoryItem.name}
-                    ID={subCategoryItem.id}
-                  />
-                );
-              })}
+            
+           <Subcategories/>
+           
             </Route>
             <Route path="/subcategories/:subcategoryid">
               <Products />

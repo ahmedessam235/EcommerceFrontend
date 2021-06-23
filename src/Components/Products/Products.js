@@ -1,50 +1,46 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-export const productssList = [
-  {
-    id: 1,
-    name: "tshirts puma",
-    price: 100,
-    subCategoryID: 1,
-  },
-  {
-    id: 2,
-    name: "vnecks nike",
-    price: 200,
-    subCategoryID: 2,
-  },
-  {
-    id: 3,
-    name: "cutshirts addidas",
-    price: 300,
-    subCategoryID: 3,
-  },
-];
-var result = {};
-function getProductsbysubcategory(subCategoryID) {
-  let counter = 0;
+import getProducts from "../../Actions/ProductsActions/ProductsActions";
+import Product from "../Product/Product";
+  
 
-  for (counter = 0; counter < productssList.length; counter++) {
-    if (productssList[counter].subCategoryID == subCategoryID) {
-      result.name = productssList[counter].name;
-      result.price = productssList[counter].price;
-    }
-  }
-  console.log(result, " aho el result");
-}
+  
 function Products() {
-  var { subcategoryid } = useParams();
-  var subCategoryID = subcategoryid.charAt(subcategoryid.length - 1); //parsing the id of subcategories t
-  console.log(subCategoryID);
-  getProductsbysubcategory(subCategoryID);
+  const [products, getproducts] = React.useState("");
+  const productid  = window.location.pathname  ;  //get the ID of subcategories through URL.
+  var productsResult = productid.split("=");  //sprlit url string using split function to get the ID.
+  const productyQuery = productsResult[1];     // prepare the value to send it to database.
+  console.log(productyQuery[1], "sucategories aho");
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const requestedProducts = await getProducts(productyQuery);
+      getproducts(requestedProducts); 
+      console.log(products, "result products");
+    }
+    fetchData();
+  }, []);
+  if (products){
   return (
+
     <div>
-      <p>
-        {result.name}
-        {result.price}
-      </p>
+      {products.map((productItem, index) => {
+     return (
+       <Product
+         key={index}
+         id={index}
+         subCategoryName={productItem.name}
+         ID={productItem.id}
+         price = {productItem.price}
+       />
+     );
+   })}
     </div>
   );
+}else {
+  return (
+<h1>Products are loading ......</h1>
+  )
+}
 }
 
 export default Products;

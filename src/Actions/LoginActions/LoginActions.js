@@ -28,14 +28,6 @@ export async function getUsertoken(email, password) {
   } else {
     return null;
   }
-
-  // .then(function (response) {
-  //   status = response.status;
-  //   if (response.status !== 200) {
-  //       console.log(response.err,"erorrr in user");
-  //     return;
-  //   }
-  // });
 }
 
 export async function getUserInfo(token) {
@@ -54,7 +46,6 @@ export async function getUserInfo(token) {
 export async function restoreLoggedInUser(contextData) {
   //1  - get token from cookie
   var token = Cookies.get("token");
-  console.log(token, "get cookies hena :");
   // 2 - same implemetation of handle signin func
   //2- Call the backend again to exchange token for userinfo.
   let userInfo = await getUserInfo(token);

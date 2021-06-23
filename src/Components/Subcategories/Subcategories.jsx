@@ -1,36 +1,45 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import getSubCategories from "../../Actions/SubcategoriesActions/SubcategoriesActions";
+import Subcategory from "../Subcategory/Subcategory";
 
-export const subcategoriesList = [
-  {
-    id: 1,
-    name: "tshirts",
-  },
-  {
-    id: 2,
-    name: "vnecks",
-  },
-  {
-    id: 3,
-    name: "cutshirts",
-  },
-];
 function Subcategories(props) {
-  function handleRoutinToproducts() {
-    window.location.replace("/subcategories/subcategoryid=" + props.ID);
-  }
+ 
+  const [subcategories, getsubcategories] = React.useState("");
+  const subcategoryid  = window.location.pathname  ;  //get the ID of categories through URL.
+  var subCategoryResult = subcategoryid.split("=");  //sprlit url string using split function to get the ID.
+  const subCategoryQuery = subCategoryResult[1];     // prepare the value to send it to database.
 
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const requestedSubCategories = await getSubCategories(subCategoryQuery);
+      getsubcategories(requestedSubCategories); 
+    }
+    fetchData();
+  }, []);
+
+if(subcategories) {
   return (
-    // <a href={"subcategories/categoryid=" + props.ID}>subcategories hena </a>
-    <Router>
-      <Link
-        to={"subcategories/subcategoryid=" + props.ID}
-        onClick={handleRoutinToproducts}
-      >
-        {props.subCategoryName}
-      </Link>
-    </Router>
+    <div>
+      {subcategories.map((subCategoryItem, index) => {
+     return (
+       <Subcategory
+         key={index}
+         id={index}
+         subCategoryName={subCategoryItem.name}
+         ID={subCategoryItem.id}
+       />
+     );
+   })}
+    </div>
   );
+} else {
+return (
+  <div> 
+  <h1>.......Loading Subcategories</h1>
+  </div>
+);
+}
 }
 
 export default Subcategories;
