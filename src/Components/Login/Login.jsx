@@ -28,17 +28,27 @@ function Login(props) {
     //save to the global context (user data ) for the sign up
 
     event.preventDefault();
+    if (email === ""||password=== ""){
+      alert("please input your credentials")
+    } else {
     await RegisterUserData(email, password);
 
     contextData.setUser(contextData);
     updateloginstate(true);
     history.push("/login");
+  }
     // event.preventDefault();
   }
 
   async function HandleSignIn(event) {
-    event.preventDefault();
 
+   console.log("i'm here before request");
+   event.preventDefault();
+   console.log(email,"email");
+   console.log(password,"password");
+   if (email === ""||password=== ""){
+     alert("please input your credentials")
+   } else {
     //1- Call the backend to exchange the email,password for a token
     let token = await getUsertoken(email, password);
 
@@ -62,7 +72,9 @@ function Login(props) {
     updatedata();
     console.log(contextData.token, "token aheh");
     Cookies.set("token", contextData.token);
+    
     history.push("/");
+  }
   }
 
   function updatedata() {
@@ -86,7 +98,7 @@ function Login(props) {
               id="inputEmail"
               className="form-control"
               placeholder="Email address"
-              required=""
+              required
               autoFocus=""
               onChange={handleEmail}
               value={email}
@@ -101,7 +113,7 @@ function Login(props) {
               id="inputPassword"
               className="form-control "
               placeholder="Password"
-              required=""
+              required
               value={password}
               onChange={handlePassword}
             />

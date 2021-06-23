@@ -25,7 +25,12 @@ export async function getUsertoken(email, password) {
   });
   if (response.status === 200) {
     return response.data.token;
-  } else {
+  } else if (response.status === 500){
+    console.log(response.data, "response for wrong crednetials");
+    alert("wrong data");
+    return null;
+  }
+  else {
     return null;
   }
 }
