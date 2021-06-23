@@ -14,7 +14,9 @@ export function AdminPanel(props){
     async function HandleCreateAdmin(event) {
         //save to the global context (user data ) for the sign up
         event.preventDefault();
-        
+        if (email === "" ||password === ""){
+          alert("please add Email and Password");
+        } else {
         //1- Send email,password,token to a function
         await CreateNewAdmin(email, password,user.token);
       }
@@ -23,6 +25,7 @@ export function AdminPanel(props){
                 <h1>Unavailable</h1>
             );
       }
+    }
     return(
         <div>
             <h1>Welcome to admin panel - {user.email}</h1>
