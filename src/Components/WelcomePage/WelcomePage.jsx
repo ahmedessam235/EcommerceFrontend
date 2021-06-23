@@ -9,6 +9,7 @@ import { userDetailContext } from "../../App";
 import getCategories from "../../Actions/CategoriesActions/CategoriesActions";
 import { restoreLoggedInUser } from "../../Actions/LoginActions/LoginActions";
 import { AdminPanel } from "../AdminPanel/AdminPanel";
+ import "./WelcomePage.css";
 
 function WelcomePage() {
   var result;
@@ -38,8 +39,7 @@ function WelcomePage() {
         <Router>
           <Switch>
             <Route exact path="/">
-              {/* <h1>welcome {renderedData}</h1> */}
-
+            <div className = "Categories">     
               {categories.map((categoryItem, index) => {
                 return (
                   <Categories
@@ -50,7 +50,9 @@ function WelcomePage() {
                   />
                 );
               })}
+              </div>
             </Route>
+           
             <Route path="/categories/:categoryid">
             
            <Subcategories/>

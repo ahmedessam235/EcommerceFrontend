@@ -1,7 +1,7 @@
 import React from "react";
 import getSubCategories from "../../Actions/SubcategoriesActions/SubcategoriesActions";
 import Subcategory from "../Subcategory/Subcategory";
-
+import "./Subcategories.css";
 function Subcategories(props) {
  
   const [subcategories, getsubcategories] = React.useState("");
@@ -21,7 +21,7 @@ function Subcategories(props) {
 if(subcategories) {
   console.log(subcategories,"subcategories");
   return (
-    <div>
+    <div className="Subcategories">
       {subcategories.map((subCategoryItem, index) => {
      return (
        <Subcategory

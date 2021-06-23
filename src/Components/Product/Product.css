@@ -1,0 +1,14 @@
+.Product {
+    
+    margin: 1%;
+}
+
+.productImage {
+    height: 200px;
+    width: 400px;
+    border-bottom: 1px solid;  
+}
+.productText{
+    /* display: flex; */
+   text-align: center;
+}

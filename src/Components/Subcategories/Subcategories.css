@@ -1,0 +1,9 @@
+.Subcategories{
+    
+        display: flex;
+        justify-content: center;
+        background-color: #343a40;
+        padding-top: 15px;
+        padding-bottom: 20px;
+    
+}

@@ -1,0 +1,7 @@
+.Categories {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: #343a40;
+}

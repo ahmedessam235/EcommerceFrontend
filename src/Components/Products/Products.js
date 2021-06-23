@@ -1,7 +1,7 @@
 import React from "react";
 import getProducts from "../../Actions/ProductsActions/ProductsActions";
 import Product from "../Product/Product";
-  
+import "./Products.css";
 
   
 function Products() {
@@ -23,7 +23,7 @@ function Products() {
     console.log(products,"products after rendering");
   return (
 
-    <div>
+    <div className="Products">
       {products.map((productItem, index) => {
      return (
        <Product
