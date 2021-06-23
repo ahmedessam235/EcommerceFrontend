@@ -5,6 +5,7 @@ function Product(props){
 <div>
 <p>{props.ProductName}</p>
 <p>{props.price}</p>
+<img src={props.ImageURL} alt=''></img>
 </div>
     );
 }

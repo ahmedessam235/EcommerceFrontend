@@ -33,11 +33,12 @@ function WelcomePage() {
       <div>
         <Navbar 
           user = {contextData}
+          
         /> 
         <Router>
           <Switch>
             <Route exact path="/">
-              <h1>welcome {renderedData}</h1>
+              {/* <h1>welcome {renderedData}</h1> */}
 
               {categories.map((categoryItem, index) => {
                 return (

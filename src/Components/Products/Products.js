@@ -30,6 +30,7 @@ function Products() {
          key={index}
          id={index}
          ProductName={productItem.name}
+         ImageURL={productItem.imageURL}
          ID={productItem.productId}
          price = {productItem.price}
        />

@@ -2,7 +2,8 @@ import React from "react";
 import "./Navigationbar.css";
 function Navbar(props) {
   let isAdmin = props.user.userDetails.isAdmin;  //conditional rendering value for showing the admin panel.
-
+  let userName = props.user.userDetails.email;
+  
   return (
     <div className="Navigation-bar">
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -21,11 +22,17 @@ function Navbar(props) {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav mr-auto">       
             <li className="nav-item">
-              <a className="nav-link" href="/login">
+
+            {(userName !== null || userName !== undefined)?
+             ( <a className="nav-link" href="/">
+                welcome {userName}
+              </a>):(<a className="nav-link" href="/login">
                 Log in
-              </a>
+              </a>)
+              }
+              
             </li>
             {
               isAdmin?
