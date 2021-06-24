@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 
 import axios from "axios";
+import Cart from "../../Data/cart";
 export async function RegisterUserData(email, password) {
   const userData = { email: email, password: password };
   var status = 0;
@@ -60,13 +61,8 @@ export async function restoreLoggedInUser(contextData) {
     email: userInfo.userEmail,
     token: token,
     isAdmin: userInfo.isadmin,
+    cart:Cart.getProducts()
   };
-  contextData.email = globalUser.email;
-  contextData.token = globalUser.token;
-  contextData.isAdmin = globalUser.isAdmin;
-  // contextData.userDetails = globalUser;
-  contextData.setUser(contextData); //update global state with user data
-  console.log(contextData.token, "token aheh");
-  Cookies.set("token", contextData.token);
+  contextData.setUser(globalUser); //update global state with user data
   return globalUser.email;
 }

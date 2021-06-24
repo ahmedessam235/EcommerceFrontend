@@ -10,7 +10,6 @@ import getCategories from "../../Actions/CategoriesActions/CategoriesActions";
 import { restoreLoggedInUser } from "../../Actions/LoginActions/LoginActions";
 import { AdminPanel } from "../AdminPanel/AdminPanel";
  import "./WelcomePage.css";
-
 function WelcomePage() {
   var result;
   var contextData = React.useContext(userDetailContext);
@@ -59,7 +58,7 @@ function WelcomePage() {
            
             </Route>
             <Route path="/subcategories/:subcategoryid">
-              <Products />
+              <Products user={contextData} />
             </Route>
 
             <Route path="/login">

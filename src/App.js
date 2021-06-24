@@ -7,6 +7,7 @@ function App() {
     email: null,
     token: null,
     isAdmin: null,
+    cart: []
   });
   const value = { userDetails, setUser }; //passing the values of usestate hook in order to change the global user data anywhere in the children
 

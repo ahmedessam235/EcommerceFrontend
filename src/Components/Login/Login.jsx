@@ -33,7 +33,7 @@ function Login(props) {
     } else {
     await RegisterUserData(email, password);
 
-    contextData.setUser(contextData);
+    contextData.setUser(contextData.userDetails);
     updateloginstate(true);
     history.push("/login");
   }
@@ -60,19 +60,12 @@ function Login(props) {
       email: userInfo.userEmail,
       token: token,
       isAdmin: userInfo.isadmin,
+      cart:[]
     };
 
-    console.log(globalUser);
-    contextData.email = globalUser.email;
-    contextData.token = globalUser.token;
-    contextData.isAdmin = globalUser.isAdmin;
-    // contextData.userDetails = globalUser;
-    contextData.setUser(contextData); //update global state with user data
-    console.log(contextData, "context data update is");
+    Cookies.set("token", token);    
+    contextData.setUser(globalUser); //update global state with user data
     updatedata();
-    console.log(contextData.token, "token aheh");
-    Cookies.set("token", contextData.token);
-    
     history.push("/");
   }
   }
