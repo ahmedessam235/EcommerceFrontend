@@ -17,7 +17,7 @@ function Subcategories(props) {
   }, []);
 
   if (subcategories) {
-    console.log(subcategories, "subcategories");
+    
     return (
       <div className="Subcategories">
         {subcategories.map((subCategoryItem, index) => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 async function getCategories() {
-  let response = await axios.get("http://localhost:5000/category");
+  let response = await axios.get("https://ecommerce-app-everst-minds.herokuapp.com/category");
   if (response.status === 200) {
     return response.data;
   } else {

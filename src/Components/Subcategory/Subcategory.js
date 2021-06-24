@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Subcategory.css";
 
 function Subcategory(props) {
-  console.log(props.ID, "subcategory ID aho");
+  
   return (
     <div className="Subcategory">
       <Link

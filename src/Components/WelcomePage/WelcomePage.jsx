@@ -24,7 +24,7 @@ function WelcomePage() {
       getcategories(requestedCategories);
       result = await restoreLoggedInUser(contextData);
       UpdateRendereduser(result);
-      console.log(result, "result 1");
+      
     }
     fetchData();
   }, []);

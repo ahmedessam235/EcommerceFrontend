@@ -41,10 +41,10 @@ function Login(props) {
   }
 
   async function HandleSignIn(event) {
-    console.log("i'm here before request");
+    
     event.preventDefault();
-    console.log(email, "email");
-    console.log(password, "password");
+    
+    
     if (email === "" || password === "") {
       alert("please input your credentials");
     } else {
