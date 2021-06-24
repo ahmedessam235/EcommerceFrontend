@@ -1,36 +1,33 @@
-import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import CreateNewAdmin from '../../Actions/AdminActions/AdminActions';
+import React, { useState } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import CreateNewAdmin from "../../Actions/AdminActions/AdminActions";
 import { useHistory } from "react-router-dom";
 
+export function AdminPanel(props) {
+  let history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let user = props.user.userDetails;
 
-export function AdminPanel(props){
-    let history = useHistory();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    let user = props.user.userDetails;
-
-    async function HandleCreateAdmin(event) {
-        //save to the global context (user data ) for the sign up
-        event.preventDefault();
-        if (email === "" ||password === ""){
-          alert("please add Email and Password");
-        } else {
-        //1- Send email,password,token to a function
-        await CreateNewAdmin(email, password,user.token);
-      }
-      if(user.isAdmin !== true){
-            return (
-                <h1>Unavailable</h1>
-            );
-      }
+  async function HandleCreateAdmin(event) {
+    //save to the global context (user data ) for the sign up
+    event.preventDefault();
+    if (email === "" || password === "") {
+      alert("please add Email and Password");
+    } else {
+      //1- Send email,password,token to a function
+      await CreateNewAdmin(email, password, user.token);
     }
-    return(
-        <div>
-            <h1>Welcome to admin panel - {user.email}</h1>
+    if (user.isAdmin !== true) {
+      return <h1>Unavailable</h1>;
+    }
+  }
+  return (
+    <div>
+      <h1>Welcome to admin panel - {user.email}</h1>
 
-            <Container>
+      <Container>
         <form className="form-signin text-center">
           <label htmlFor="inputEmail " className="sr-only">
             Email address
@@ -43,7 +40,9 @@ export function AdminPanel(props){
               placeholder="Email address"
               required=""
               autoFocus=""
-              onChange={(event)=>{setEmail(event.target.value)}}
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
               value={email}
             />
           </Row>
@@ -58,7 +57,9 @@ export function AdminPanel(props){
               placeholder="Password"
               required=""
               value={password}
-              onChange={(event)=>{setPassword(event.target.value)}}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
             />
           </Row>
 
@@ -75,9 +76,8 @@ export function AdminPanel(props){
           <p className="mt-5 mb-3 text-muted">© 2021-2022</p>
         </form>
       </Container>
-
-        </div>
-    );
+    </div>
+  );
 }
 
 export default AdminPanel;

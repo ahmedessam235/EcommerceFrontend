@@ -9,12 +9,12 @@ import { userDetailContext } from "../../App";
 import getCategories from "../../Actions/CategoriesActions/CategoriesActions";
 import { restoreLoggedInUser } from "../../Actions/LoginActions/LoginActions";
 import { AdminPanel } from "../AdminPanel/AdminPanel";
- import "./WelcomePage.css";
+import "./WelcomePage.css";
 function WelcomePage() {
   var result;
   var contextData = React.useContext(userDetailContext);
   const [categories, getcategories] = React.useState("");
-  const [renderedData, UpdateRendereduser] = React.useState(contextData.email);
+  const [renderedData, UpdateRendereduser] = React.useState(contextData.email); //update the welcome in Navbar with the registered user
   function updateWelcomePage() {
     UpdateRendereduser(contextData.email);
   }
@@ -29,33 +29,29 @@ function WelcomePage() {
     fetchData();
   }, []);
   if (categories) {
+    //safety check until the the data is fetched from the API
     return (
       <div>
-        <Navbar 
-          user = {contextData}
-          
-        /> 
+        <Navbar user={contextData} />
         <Router>
           <Switch>
             <Route exact path="/">
-            <div className = "Categories">     
-              {categories.map((categoryItem, index) => {
-                return (
-                  <Categories
-                    key={index}
-                    id={index}
-                    categoryName={categoryItem.name}
-                    ID={categoryItem.categoryId}
-                  />
-                );
-              })}
+              <div className="Categories">
+                {categories.map((categoryItem, index) => {
+                  return (
+                    <Categories
+                      key={index}
+                      id={index}
+                      categoryName={categoryItem.name}
+                      ID={categoryItem.categoryId}
+                    />
+                  );
+                })}
               </div>
             </Route>
-           
+
             <Route path="/categories/:categoryid">
-            
-           <Subcategories/>
-           
+              <Subcategories />
             </Route>
             <Route path="/subcategories/:subcategoryid">
               <Products user={contextData} />
@@ -65,9 +61,7 @@ function WelcomePage() {
               <Login userUpdated={updateWelcomePage} />
             </Route>
             <Route path="/admin">
-              <AdminPanel 
-                user = {contextData}
-              />
+              <AdminPanel user={contextData} />
             </Route>
           </Switch>
         </Router>

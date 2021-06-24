@@ -28,46 +28,45 @@ function Login(props) {
     //save to the global context (user data ) for the sign up
 
     event.preventDefault();
-    if (email === ""||password=== ""){
-      alert("please input your credentials")
+    if (email === "" || password === "") {
+      alert("please input your credentials");
     } else {
-    await RegisterUserData(email, password);
+      await RegisterUserData(email, password);
 
-    contextData.setUser(contextData.userDetails);
-    updateloginstate(true);
-    history.push("/login");
-  }
+      contextData.setUser(contextData.userDetails);
+      updateloginstate(true);
+      history.push("/login");
+    }
     // event.preventDefault();
   }
 
   async function HandleSignIn(event) {
+    console.log("i'm here before request");
+    event.preventDefault();
+    console.log(email, "email");
+    console.log(password, "password");
+    if (email === "" || password === "") {
+      alert("please input your credentials");
+    } else {
+      //1- Call the backend to exchange the email,password for a token
+      let token = await getUsertoken(email, password);
 
-   console.log("i'm here before request");
-   event.preventDefault();
-   console.log(email,"email");
-   console.log(password,"password");
-   if (email === ""||password=== ""){
-     alert("please input your credentials")
-   } else {
-    //1- Call the backend to exchange the email,password for a token
-    let token = await getUsertoken(email, password);
+      //2- Call the backend again to exchange token for userinfo.
+      let userInfo = await getUserInfo(token);
 
-    //2- Call the backend again to exchange token for userinfo.
-    let userInfo = await getUserInfo(token);
+      //3- Update global variable with the userinfo.
+      let globalUser = {
+        email: userInfo.userEmail,
+        token: token,
+        isAdmin: userInfo.isadmin,
+        cart: [],
+      };
 
-    //3- Update global variable with the userinfo.
-    let globalUser = {
-      email: userInfo.userEmail,
-      token: token,
-      isAdmin: userInfo.isadmin,
-      cart:[]
-    };
-
-    Cookies.set("token", token);    
-    contextData.setUser(globalUser); //update global state with user data
-    updatedata();
-    history.push("/");
-  }
+      Cookies.set("token", token);
+      contextData.setUser(globalUser); //update global state with user data
+      updatedata();
+      history.push("/");
+    }
   }
 
   function updatedata() {

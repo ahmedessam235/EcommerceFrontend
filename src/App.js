@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
-export var userDetailContext = React.createContext(null);
+export var userDetailContext = React.createContext(null); //global user state
 
 function App() {
   const [userDetails, setUser] = useState({
     email: null,
     token: null,
     isAdmin: null,
-    cart: []
+    cart: [],
   });
   const value = { userDetails, setUser }; //passing the values of usestate hook in order to change the global user data anywhere in the children
 

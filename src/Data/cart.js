@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 
 export class Cart {
-  static CART_KEY = 'cart';
+  static CART_KEY = "cart";
   static addProduct(productId) {
     let products = this.getProducts();
     if (products === null || products === undefined) {

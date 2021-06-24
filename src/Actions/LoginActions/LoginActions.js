@@ -26,12 +26,11 @@ export async function getUsertoken(email, password) {
   });
   if (response.status === 200) {
     return response.data.token;
-  } else if (response.status === 500){
+  } else if (response.status === 500) {
     console.log(response.data, "response for wrong crednetials");
     alert("wrong data");
     return null;
-  }
-  else {
+  } else {
     return null;
   }
 }
@@ -61,7 +60,7 @@ export async function restoreLoggedInUser(contextData) {
     email: userInfo.userEmail,
     token: token,
     isAdmin: userInfo.isadmin,
-    cart:Cart.getProducts()
+    cart: Cart.getProducts(),
   };
   contextData.setUser(globalUser); //update global state with user data
   return globalUser.email;

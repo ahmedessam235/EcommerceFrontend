@@ -2,3 +2,12 @@
     margin-bottom: 3.5%;
     
 }
+.cartDetails {
+   
+    color: white;
+    margin-top: 1.1%;
+    /* margin-bottom: 3%; */
+    position:absolute;
+    right:0;
+    width:200px
+    }
