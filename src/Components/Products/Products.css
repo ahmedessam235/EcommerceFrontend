@@ -1,5 +1,7 @@
 .Products {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     margin-top: 3.5%;
     margin-left: 0%;
     margin-right: 20%;
